@@ -1,0 +1,39 @@
+# Project: CDI2nero
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = cdi2nero.o buffer.o cdi.o common.o $(RES)
+LINKOBJ  = cdi2nero.o buffer.o cdi.o common.o $(RES)
+LIBS =  -L"E:/Dev-Cpp/lib" -lcomdlg32  
+INCS =  -I"E:/Dev-Cpp/include" 
+CXXINCS =  -I"E:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"E:/Dev-Cpp/include/c++/3.4.2/backward"  -I"E:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"E:/Dev-Cpp/include/c++/3.4.2"  -I"E:/Dev-Cpp/include" 
+BIN  = cdi2nero.exe
+CXXFLAGS = $(CXXINCS)   -O3
+CFLAGS = $(INCS)   -O3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before cdi2nero.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "cdi2nero.exe" $(LIBS)
+
+cdi2nero.o: cdi2nero.c
+	$(CC) -c cdi2nero.c -o cdi2nero.o $(CFLAGS)
+
+buffer.o: buffer.c
+	$(CC) -c buffer.c -o buffer.o $(CFLAGS)
+
+cdi.o: cdi.c
+	$(CC) -c cdi.c -o cdi.o $(CFLAGS)
+
+common.o: common.c
+	$(CC) -c common.c -o common.o $(CFLAGS)

@@ -1,0 +1,33 @@
+# Project: CDI2nero
+# Makefile created by Dev-C++ 4.9.3.0
+
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = cdi2nero.o buffer.o cdi.o common.o $(RES)
+LIBS =  -L"d:\archiv~1\Dev-C++\lib" -lcomdlg32
+INCS =  -I"d:\archiv~1\Dev-C++\include" 
+BIN  = cdi2nero.exe
+CFLAGS = $(INCS)  -s -O2
+
+.PHONY: clean
+
+all: cdi2nero.exe
+
+clean:
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(OBJ) -o $(BIN) $(RES) $(LIBS) $(CFLAGS)
+
+cdi2nero.o: cdi2nero.c 
+	$(CC) -c cdi2nero.c -o cdi2nero.o $(CFLAGS)
+
+buffer.o: buffer.c 
+	$(CC) -c buffer.c -o buffer.o $(CFLAGS)
+
+cdi.o: cdi.c 
+	$(CC) -c cdi.c -o cdi.o $(CFLAGS)
+
+common.o: common.c 
+	$(CC) -c common.c -o common.o $(CFLAGS)

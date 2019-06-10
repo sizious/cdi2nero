@@ -1,0 +1,186 @@
+
+CDI2Nero 0.9.9 - (C) 2002 by DeXT
+
+http://cdirip.cjb.net
+
+
+*** WARNING! This is beta software. It has not been fully tested and may
+*** contain bugs. Use it at you own risk.
+
+*** This tool must not be used to duplicate copyright-protected content.
+*** The author will not be responsible for its improper usage.
+
+
+Purpose
+-------
+
+This little tool will convert a CDI (DiscJuggler) image to NRG (Nero) format.
+Both CDI 2.0 and 3.0 image versions are supported.
+
+It currently has support for:
+
+ - CD-ROM/XA type CDs
+ - Mode 2 and Audio tracks
+ - Single session and Multisession images
+
+It lacks support for:
+
+ - Audio-only CDs (TAO only)
+ - Mode 1 data tracks
+
+These will be added soon.
+
+
+Usage
+-----
+
+Usage is very simple, just double-clic the executable file and an Open File
+dialog will appear, select your source CDI image to convert and press OK.
+A Save File dialog will then appear on the same path as source image. Write
+the desired name for the destination NRG image (you don't need to write any
+extension) and press OK. Default name is "image.nrg".
+
+You can also use it from command-line. Syntax is:
+
+cdi2nero image.cdi [image.nrg]
+
+For command-line usage, if you don't specify a destination filename, the
+source image filename will be used but with NRG extension.
+
+
+Burning
+-------
+
+Once converted you can burn the newly created image. If a DAO warning message
+appears, you should select Yes (although this depends on burner, I think).
+This will only appear on Multisession images.
+
+
+Notes
+-----
+
+This is a unified DAO/TAO version, unlike previous ones, where you can select
+NRG image type when saving. DAO images are most standard ones, and is the only
+format that Nero itself is able to generate. TAO images are special ones,
+which lacks a cuesheet, and track positions are managed by the burner itself.
+Nero is not capable of generating these. On most burners, these images will
+be burned in "Track at Once" mode (hence the name) instead of default DAO.
+
+A general note is to burn in DAO (default) mode and if something fails, try
+TAO instead. But note that if your burner doesn't support "short" tracks (i.e.
+those below 302 sectors) you still will get errors when trying to burn such
+images. These errors are usually "cannot write track at correct position",
+or seeing CD-Extra discs as Audio-only (i.e. no data track).
+
+Below is a list of tested burners, reported by users, which get successful or
+failed in burning process:
+
+Success:
+
+Acer CRW 6206A
+BTC BCE-432IE
+Gateway 8x4x32
+HP CD-Writer 7100i
+HP CD-Writer 7200e
+HP CD-Writer 8100i
+HP CD-Writer 9100i
+HP CD-Writer 9310i
+Iomega Zip CD 650
+Iomega Zip CD USB (DAO only)
+Memorex CRW-1622 (DAO only)
+Mitsumi 4801TE
+OTI-975 Socrates
+Philips CDD3610
+Philips CDD3801
+Philips CDD4201
+Philips PCRW404K
+RICOH MP9060A
+Sony CRX-140E
+Teac CD-R56S
+Yamaha 16x
+
+Failure:
+
+HP CD-Writer 7200i (*)
+HP CD-Writer 8210e
+HP CD-Writer 8250i (*)
+Memorex tri-max 200
+Mitsumi 4802TE
+Mitsumi 4804TE
+Sony CRX-100E
+Sony CRX-120
+Sony CRX-145E
+TDK VeloCD 12x
+
+(*) works with non-short tracks, patched or fixed images (tested)
+
+Please note that these "problematic" burners mostly have "short" track
+problems, and they should still work fine with non "short" track images. This
+has not been tested, unless specified with (*).
+
+You can identify "short" track type images with following CDIrip command-line:
+
+cdirip image.cdi /info >info.txt
+
+Open info.txt and search for tracks below 302 sectors in size, if any.
+
+You can try to fix them with CDIfix before converting to NRG (only in case of
+multiple audio track images).
+
+
+That's all. Hope you like it!
+
+Many thanks to xeal and myn, who have been excellent beta-testers!
+
+
+History
+-------
+
+ 0.9.9
+ 
+  - Support for DiscJuggler 4.0 CDI images
+  - cdi2nero now opens CDR-WIN 5.x (*.cdr) images, too
+  - Unified code with CDIrip
+
+ 0.9b8
+
+  - Added support for CDI 3.5.826+ images
+
+ 0.9b7
+
+  - Fixed bug in 0.9b6 with some old (3.0, 2.0) images (were not recognized)
+
+ 0.9b6
+
+  - Fixed bug with some DJ 3.5 images (only 1st session was converted)
+
+ 0.9b5
+ 
+  - Added new DiscJuggler 3.0.780 CDI image support
+ 
+ 0.9b4 (unified)
+ 
+  - Unified TAO/DAO version in a single executable
+  - Support for raw data tracks
+  - New buffering system (great speedup!)
+  - Major internal cleanup
+  - New compiler (Bloodshed Dev-C++ v4.0) - tiny executable size!
+
+ 0.9b3 (DAO)
+
+  - Fixed multiple audio track bug
+  - New progress counter (faster, bigger and better :)
+
+ 0.9b2 (TAO)
+
+  - New TAO-type NRG image
+  - Fixed multiple audio track bug
+  - Audio-only CD support (well, not really - this derives from TAO images)
+
+ 0.9b
+
+  - First release
+  - Buggy :(
+
+
+(C) 2000 DeXT

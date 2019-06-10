@@ -1,0 +1,26 @@
+
+CDI2Nero 0.9.9 - (C) 2002 by DeXT
+
+Modifications by SiZ! on 14 nov 06
+http://sbibuilder.shorturl.com/
+
+Changes :
+- added a TAO "-t" option for command line
+- added a "-h" help option
+
+usage (on command line) :
+cdi2nero <input.cdi> [output.nrg] [-t]
+
+examples :
+
+cdi2nero input.cdi
+-> generates a DAO "input.nrg" image
+
+cdi2nero input.cdi output.nrg
+-> generates a DAO "output.nrg" image
+
+cdi2nero input.cdi -t
+-> generates a TAO "input.nrg" image
+
+cdi2nero input.cdi output.nrg -t
+-> generates a TAO "output.nrg" image
